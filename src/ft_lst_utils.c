@@ -31,7 +31,9 @@ char	*ft_pop_op(t_op **lst)
 	char *s;
 	t_op *tmp;
 
-	s = (*lst)->op;
+	if (!(*lst))
+		ft_error();
+	s = ft_strdup((*lst)->op);
 	tmp = *lst;
 	*lst = (*lst)->next;
 	free(tmp);
@@ -39,37 +41,33 @@ char	*ft_pop_op(t_op **lst)
 	return (s);
 }
 
-char	*ft_pop_end(t_op **lst)
+int		ft_count_rooms(t_op *lst)
 {
-	char	*s;
-	t_op	*tmp;
-	t_op	*prev;
+	int i;
 
-	if (!((*lst)->next))	
+	i = 0;
+	ft_assert(lst);
+	while (lst)
 	{
-		s = (*lst)->op;
-		free((*lst)->op);
-		free(*lst);
-		*lst = NULL;
-		return (s);
+		if (lst && ft_is_room(lst->op))
+			i++;
+		if (lst)
+			lst = lst->next;
 	}
-	tmp = *lst;
-	while ((*lst)->next)
-	{
-		s = (*lst)->next->op;
-		prev = *lst;
-		*lst = (*lst)->next;
-	}
-	*lst = tmp;
-	free(prev->next->op);
-	free(prev->next);
-	prev->next = NULL;	
-	return (s);
+	return (i);
 }
 
-char	*ft_last_op(t_op *lst)
+void	ft_print_top_op(t_op *t)
 {
-	while (lst->next)
-		lst = lst->next;
-	return (lst->op);
+	ft_putstr(t->op);
+	ft_putchar('\n');
+}
+
+void	ft_print_lst_op(t_op *t)
+{
+	while (t)
+	{
+		ft_print_top_op(t);
+		t = t->next;
+	}
 }

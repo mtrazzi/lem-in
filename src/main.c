@@ -5,9 +5,8 @@ int main(int ac, char **av)
 	(void)ac;
 	(void)av;
 	t_env *e = ft_init_env();
-	t_op *lst;
-	lst = ft_parse_stdin();
-	ft_parse_number(lst, e);
-	ft_putnbr(e->n);
+
+	ft_parse_lst(e);
+	ft_print_mat(e->m, e->nb_r);
 	return (0);
 }

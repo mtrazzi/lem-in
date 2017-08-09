@@ -7,6 +7,7 @@ t_env	*ft_init_env(void)
 	e = ft_memalloc(sizeof(t_env));
 	e->n = 0;
 	e->m = NULL;
+	e->nb_r = 0;
 	e->c = NULL;
 	return (e);
 }

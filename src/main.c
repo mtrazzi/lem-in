@@ -7,6 +7,6 @@ int main(int ac, char **av)
 	t_env *e = ft_init_env();
 
 	ft_parse_lst(e);
-	ft_print_mat(e->m, e->nb_r);
+	ft_process_dfs(e);
 	return (0);
 }

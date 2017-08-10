@@ -45,3 +45,23 @@ void	ft_print_mat(int **m, int size)
 		ft_putchar('\n');
 	}
 }
+
+void	ft_print_ant_tab(int *tab,  int size)
+{
+	int i;
+
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("%2d ", (i + 1) % 8);
+		i++;
+	}
+	ft_putchar('\n');
+	i = 0;
+	while (i < size)
+	{
+		ft_printf("%2d ", tab[i]);
+		i++;
+	}
+	ft_putchar('\n');
+}

@@ -55,9 +55,7 @@ void	ft_parse_lst(t_env *e)
 
 	i = 1;
 	lst = ft_parse_stdin();
-	ft_putstr(">>>>>>>>>>>>>>>>>>>>>>>>\n");
 	ft_print_lst_op(lst);
-	ft_putstr("<<<<<<<<<<<<<<<<<<<<<<<<\n");
 	ft_parse_number(&lst, e);
 	e->nb_r = ft_count_rooms(lst);
 	e->c = ft_memalloc(sizeof(char *) * e->nb_r);
@@ -67,4 +65,6 @@ void	ft_parse_lst(t_env *e)
 	ft_assert(lst);
 	while (lst && (ft_is_tube(lst->op) || *(lst->op) == '#'))
 		ft_parse_tube(&lst, e);
+	e->a = ft_memalloc(sizeof(int) * e->nb_r);
+	e->a[0] = e->n;
 }

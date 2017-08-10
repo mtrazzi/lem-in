@@ -7,8 +7,12 @@ typedef struct		s_env
 {
 	int		n;		//nb de fourmis
 	int		nb_r;	//nb rooms
-	int		**m;
-	char	**c;
+	int		**m;	//matrice d'adjacence
+	char	**c;	//tableau de conversion int/char *
+	int		*a;	//tableau contenant nombre de fourmis en chaque case
+	int		**cpy;
+	int		stop;
+	int		*mov;
 }					t_env;
 typedef struct		s_op
 {
@@ -37,5 +41,10 @@ char		*ft_process_room(char *s);
 void		ft_assert(t_op *lst);
 void		ft_print_tab(char **tab, int size);
 void		ft_print_mat(int **m, int size);
+void		ft_print_ant_tab(int *tab, int size);
+void		ft_copy_mat(t_env *e);
+void		ft_dfs(t_env *e, int start);
+int			ft_is_finished(t_env *e);
+void		ft_process_dfs(t_env *e);
 
 #endif

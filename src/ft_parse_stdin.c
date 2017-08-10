@@ -9,6 +9,9 @@ t_env	*ft_init_env(void)
 	e->m = NULL;
 	e->nb_r = 0;
 	e->c = NULL;
+	e->a = NULL;
+	e->cpy = NULL;
+	e->mov = NULL;
 	return (e);
 }
 

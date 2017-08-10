@@ -48,5 +48,9 @@ int			**ft_backup_mat(int **m, int size);
 int			ft_is_there_path(t_env *e, int end);
 void		ft_free_mat(int **m, int size);
 void		ft_free(void *p);
+void		ft_del_vertex(t_env *e, int s);
+int			ft_get_pre(t_env *e, int s, int *tab);
+int			*ft_find_path(t_env *e);
+void		ft_del_path(t_env *e, int *path);
 
 #endif

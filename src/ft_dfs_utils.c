@@ -5,7 +5,7 @@ void	ft_copy_mat(t_env *e)
 	int i;
 	int j;
 
-	ft_free(e->cpy);
+	ft_free_mat(e->cpy, e->nb_r);
 	e->cpy = ft_init_mat(e->nb_r);
 	i = 0;
 	while (i < e->nb_r)
@@ -59,6 +59,8 @@ void	ft_free_mat(int **m, int size)
 {
 	int i;
 
+	if (!m)
+		return ;
 	i = 0;
 	while (i < size)
 	{
@@ -66,4 +68,31 @@ void	ft_free_mat(int **m, int size)
 		i++;
 	}
 	free(m);
+}
+
+int		ft_get_pre(t_env *e, int s, int *tab)
+{
+	int i;
+
+	i = 0;
+	while (i < e->nb_r)
+	{
+		if (tab[i] == s)
+			return (i);
+		i++;
+	}
+	return (-1);
+}
+
+void	ft_del_path(t_env *e, int *path)
+{
+	int i;
+
+	i = 0;
+	while (i < e->nb_r)
+	{
+		if (path[i])
+			ft_del_vertex(e, path[i]);
+		i++;
+	}
 }

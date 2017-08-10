@@ -43,8 +43,10 @@ void		ft_print_tab(char **tab, int size);
 void		ft_print_mat(int **m, int size);
 void		ft_print_ant_tab(int *tab, int size);
 void		ft_copy_mat(t_env *e);
-void		ft_dfs(t_env *e, int start);
 int			ft_is_finished(t_env *e);
-void		ft_process_dfs(t_env *e);
+int			**ft_backup_mat(int **m, int size);
+int			ft_is_there_path(t_env *e, int end);
+void		ft_free_mat(int **m, int size);
+void		ft_free(void *p);
 
 #endif

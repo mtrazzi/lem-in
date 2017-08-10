@@ -1,2 +1,2 @@
 make
-cat maps/example | ./lem-in
+cat ${1-maps/example} | ./lem-in

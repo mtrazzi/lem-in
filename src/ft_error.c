@@ -11,3 +11,12 @@ void	ft_assert(t_op *lst)
 	if (!lst)
 		ft_error();
 }
+
+void	ft_free(void *p)
+{
+	if (!p)
+	{
+		free(p);
+		p = NULL;
+	}
+}

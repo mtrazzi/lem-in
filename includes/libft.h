@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 12:59:16 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/08 17:37:03 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/11 15:59:34 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 # define LIBFT_H
 # include "ft_printf.h"
-# define SPILL_MULT	2
-# define MAX_FD		1000
-# define BUF_SIZE	42
+# define BUF_SIZE	100000
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>

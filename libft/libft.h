@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 12:59:16 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/08 19:05:17 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/11 16:00:23 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,7 @@
 
 # define LIBFT_H
 # include "ft_printf.h"
-# define SPILL_MULT	2
-# define MAX_FD		1000
-# define BUF_SIZE	42
+# define BUF_SIZE	100000
 # include <stdlib.h>
 # include <unistd.h>
 # include <string.h>
@@ -95,13 +93,5 @@ void				ft_lstdel(t_list **alst, void (*del)(void *, size_t));
 void				ft_lstadd(t_list **alst, t_list *nw);
 void				ft_lstiter(t_list *lst, void (*f)(t_list *elem));
 t_list				*ft_lstmap(t_list *lst, t_list *(*f)(t_list *elem));
-typedef struct		s_stock
-{
-	char			*spill;
-	long			length;
-	long			lu;
-	int				read_ret;
-	char			*line_end;
-}					t_stock;
 
 #endif

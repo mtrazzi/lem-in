@@ -84,10 +84,10 @@ t_op *ft_parse_stdin(void)
 		|| *line == '#');
 		if (ok)
 			ft_add_to_end(line, &lst);
-		ft_free(line);
+		free(line);
 	}
-	ft_free(line);
+	free(line);
 	if (ret < 0)
-		ft_error();
+		ft_error("error in get_next_line");
 	return (lst);
 }

@@ -25,7 +25,7 @@ int			ft_is_tube(char *line);
 t_op		*ft_new_op(char *op);
 void		ft_add_to_end(char *op, t_op **lst);
 char		*ft_pop_op(t_op **lst);
-void		ft_error(void);
+void		ft_error(char *str);
 t_op		*ft_parse_stdin(void);
 int			ft_is_room(char *line);
 int			ft_is_tube(char *line);
@@ -38,7 +38,7 @@ int			ft_parse_room(t_op **lst, t_env *e, int i);
 int			**ft_init_mat(int n);
 int			ft_get_index(char *str, t_env *e);
 char		*ft_process_room(char *s);
-void		ft_assert(t_op *lst);
+void		ft_assert(t_op *lst, char *str);
 void		ft_print_tab(char **tab, int size);
 void		ft_print_mat(int **m, int size);
 void		ft_print_ant_tab(int *tab, int size);
@@ -56,5 +56,7 @@ int			ft_count_paths(t_env *e);
 void		ft_create_mat_path(t_env *e);
 void		ft_process_paths(t_env *e);
 void		ft_free_env(t_env *e);
+void		ft_error_env(t_env *e, char *str);
+void		ft_free_lst_op(t_op *lst);
 
 #endif

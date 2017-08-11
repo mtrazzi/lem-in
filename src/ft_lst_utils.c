@@ -32,7 +32,7 @@ char	*ft_pop_op(t_op **lst)
 	t_op *tmp;
 
 	if (!(*lst))
-		ft_error();
+		ft_error("not well formated");
 	s = ft_strdup((*lst)->op);
 	tmp = *lst;
 	*lst = (*lst)->next;
@@ -46,7 +46,7 @@ int		ft_count_rooms(t_op *lst)
 	int i;
 
 	i = 0;
-	ft_assert(lst);
+	ft_assert(lst, "not able to count rooms");
 	while (lst)
 	{
 		if (lst && ft_is_room(lst->op))

@@ -6,7 +6,7 @@
 #    By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/06 11:51:28 by mtrazzi           #+#    #+#              #
-#    Updated: 2017/08/11 07:41:11 by mtrazzi          ###   ########.fr        #
+#    Updated: 2017/08/11 14:22:07 by mtrazzi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -41,7 +41,8 @@ SRC_FILES		=	main.c				\
 					ft_print_utils.c	\
 					ft_dfs_utils.c		\
 					ft_find_path.c		\
-					ft_process_paths.c	
+					ft_process_paths.c	\
+					ft_clean.c
 
 SRC				=	$(addprefix $(SRC_PATH), $(SRC_FILES))
 

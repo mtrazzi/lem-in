@@ -11,8 +11,8 @@ typedef struct		s_env
 	char	**c;	//tableau de conversion int/char *
 	int		*a;	//tableau contenant nombre de fourmis en chaque case
 	int		**cpy;
-	int		stop;
-	int		*mov;
+	int		**paths;
+	int		nb_paths;
 }					t_env;
 typedef struct		s_op
 {
@@ -52,5 +52,9 @@ void		ft_del_vertex(t_env *e, int s);
 int			ft_get_pre(t_env *e, int s, int *tab);
 int			*ft_find_path(t_env *e);
 void		ft_del_path(t_env *e, int *path);
+int			ft_count_paths(t_env *e);
+void		ft_create_mat_path(t_env *e);
+void		ft_process_paths(t_env *e);
+void		ft_free_env(t_env *e);
 
 #endif

@@ -60,7 +60,7 @@ void	ft_print_ant_tab(int *tab,  int size)
 	i = 0;
 	while (i < size)
 	{
-		ft_printf("%2d ", (tab[i] + 1) % 8);
+		ft_printf("%2d ", tab[i]);
 		i++;
 	}
 	ft_putchar('\n');

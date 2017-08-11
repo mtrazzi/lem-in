@@ -11,7 +11,8 @@ t_env	*ft_init_env(void)
 	e->c = NULL;
 	e->a = NULL;
 	e->cpy = NULL;
-	e->mov = NULL;
+	e->paths = NULL;
+	e->nb_paths = 0;
 	return (e);
 }
 
@@ -83,9 +84,9 @@ t_op *ft_parse_stdin(void)
 		|| *line == '#');
 		if (ok)
 			ft_add_to_end(line, &lst);
-		free(line);
-		line = NULL;
+		ft_free(line);
 	}
+	ft_free(line);
 	if (ret < 0)
 		ft_error();
 	return (lst);

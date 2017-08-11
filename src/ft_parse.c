@@ -55,6 +55,8 @@ void	ft_parse_lst(t_env *e)
 
 	i = 1;
 	lst = ft_parse_stdin();
+	ft_print_lst_op(lst);
+	ft_putchar('\n');
 	ft_parse_number(&lst, e);
 	e->nb_r = ft_count_rooms(lst);
 	e->c = ft_memalloc(sizeof(char *) * e->nb_r);
@@ -69,5 +71,4 @@ void	ft_parse_lst(t_env *e)
 	ft_copy_mat(e);
 	if (!ft_is_there_path(e, e->nb_r - 1))
 		ft_error();
-	ft_print_lst_op(lst);
 }

@@ -56,7 +56,6 @@ int		ft_find_path_aux(t_env *e, int *path, int end)
 	{
 		if (e->cpy[i][end])
 		{	
-			ft_printf("(%s, %s)\n", e->c[i], e->c[end]);
 			m = ft_backup_mat(e->cpy, e->nb_r);
 			e->cpy[i][end] = 0;
 			e->cpy[end][i] = 0;

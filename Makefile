@@ -100,6 +100,11 @@ fclean: clean
 
 re: fclean all
 
+linux: $(LIB)
+	@echo "Building $(NAME)..."
+	$(CC) $(CFLAGS) $(SRC) $(INC) $(LIB) -o $(NAME)
+	@echo "\033[3;94m!$(NAME) built!\033[0m"
+
 norme: fclean
 	norminette $(SRC)
 	norminette $(LIB_PATH)

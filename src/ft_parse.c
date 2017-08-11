@@ -10,6 +10,7 @@ void	ft_parse_number(t_op **lst, t_env *e)
 	if (!ft_is_number(line))
 		ft_error("not a number for first line");
 	e->n = ft_atoi(line);
+	free(line);
 }
 
 int		ft_parse_room(t_op **lst, t_env *e, int i)
@@ -28,10 +29,14 @@ int		ft_parse_room(t_op **lst, t_env *e, int i)
 			ft_error_env(e, "incorrect room after start or end");
 		}
 		e->c[(!ft_strcmp(line, "##start") ? 0 : e->nb_r - 1)] = ft_process_room(room);
+		free(line);
 		return (0);
 	}
 	else if ((*line) == '#')
+	{
+		free(line);
 		return (0);
+	}
 	e->c[i] = ft_process_room(line);
 	return (1);
 }
@@ -44,7 +49,10 @@ void	ft_parse_tube(t_op **lst, t_env *e)
 
 	line = ft_pop_op(lst);
 	if (*(line) == '#')
+	{
+		free(line);
 		return ;
+	}
 	*(ft_strchr(line, '-')) = '\0';	
 	x = ft_get_index(line, e);
 	y = ft_get_index(ft_strchr(line, '\0') + 1, e);

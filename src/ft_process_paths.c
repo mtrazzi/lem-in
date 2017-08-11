@@ -3,13 +3,15 @@
 int		ft_count_paths(t_env *e)
 {
 	int i;
-
+	int *tab;
 	i = 0;
 	
 	ft_copy_mat(e);
 	while (ft_is_there_path(e, e->nb_r - 1))
 	{
-		ft_del_path(e, ft_find_path(e));
+		tab = ft_find_path(e);
+		ft_del_path(e, tab);
+		free(tab);
 		i++;
 	}
 	return (i);

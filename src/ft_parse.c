@@ -22,8 +22,12 @@ int		ft_parse_room(t_op **lst, t_env *e, int i)
 	{
 		room = ft_pop_op(lst);
 		if (!ft_is_room(room))
+		{
+			free(line);
+			free(room);
 			ft_error_env(e, "incorrect room after start or end");
-		e->c[(!ft_strcmp(line, "##start") ? 0 : e->nb_r - 1)] = ft_process_room(room); 
+		}
+		e->c[(!ft_strcmp(line, "##start") ? 0 : e->nb_r - 1)] = ft_process_room(room);
 		return (0);
 	}
 	else if ((*line) == '#')
@@ -46,6 +50,7 @@ void	ft_parse_tube(t_op **lst, t_env *e)
 	y = ft_get_index(ft_strchr(line, '\0') + 1, e);
 	e->m[x][y] = 1;
 	e->m[y][x] = 1;
+	free(line);
 }
 
 void	ft_parse_lst(t_env *e)

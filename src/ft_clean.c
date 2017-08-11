@@ -18,6 +18,7 @@ void	ft_free_env(t_env *e)
 	e->n = 0;
 	e->nb_r = 0;
 	e->nb_paths = 0;
+	free(e);
 }
 
 void	ft_free_lst_op(t_op *lst)

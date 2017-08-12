@@ -54,8 +54,9 @@ int		ft_find_path_aux(t_env *e, int *path, int end)
 	i = 0;
 	while (i < e->nb_r)
 	{
-		if (e->cpy[i][end])
-		{	
+		if (e->cpy[i][end] && !e->visited[i])
+		{
+			e->visited[i] = 1;
 			m = ft_backup_mat(e->cpy, e->nb_r);
 			e->cpy[i][end] = 0;
 			e->cpy[end][i] = 0;
@@ -81,6 +82,12 @@ int		*ft_find_path(t_env *e) // supposing there is path
 	 int *result;
 
 	 result = ft_memalloc(sizeof(int) * e->nb_r);
+	 e->visited = ft_memalloc(sizeof(int) * e->nb_r);
 	 ft_find_path_aux(e, result, e->nb_r - 1);
+	 if (e->visited)
+	 {
+	 	free(e->visited);
+		e->visited = NULL;	 
+	 }
 	 return (result);
 }

@@ -6,6 +6,7 @@ char	*get_buffer(const int fd)
 	int		ret;
 	int		n;
 
+	ft_memset(buff, 0, BUF_SIZE);
 	n = 0;
 	ret = read(fd, buff, BUF_SIZE);
 	if (ret < 0)

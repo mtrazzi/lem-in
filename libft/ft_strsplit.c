@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 17:09:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/11 16:25:14 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/12 11:41:38 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,5 +73,7 @@ char			**ft_strsplit(char const *s, char c)
 		j++;
 	}
 	tab[j] = 0;
+	for (size_t a = 0; a < count_words(s, c); a++)
+		ft_printf("line %d is %s\n", a, tab[a]);
 	return (tab);
 }

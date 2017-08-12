@@ -10,7 +10,11 @@ void	ft_error(char *str)
 
 void	ft_error_env(t_env *e, char *str)
 {
-	ft_free_env(e);
+	if (e)
+	{
+		ft_free_env(e);
+		e = NULL;
+	}
 	ft_error(str);
 }
 

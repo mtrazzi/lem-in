@@ -64,10 +64,18 @@ void	ft_free_mat(int **m, int size)
 	i = 0;
 	while (i < size)
 	{
-		free(m[i]);
+		if (m[i])
+		{
+			free(m[i]);
+			m[i] = NULL;
+		}
 		i++;
 	}
-	free(m);
+	if (m)
+	{	
+		free(m);
+		m = NULL;
+	}
 }
 
 int		ft_get_pre(t_env *e, int s, int *tab)

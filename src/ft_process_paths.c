@@ -23,7 +23,7 @@ void	ft_create_mat_path(t_env *e)
 	int	*path;
 
 	e->nb_paths = ft_count_paths(e);
-	e->paths = ft_memalloc(e->nb_paths);
+	e->paths = ft_memalloc(sizeof(int *) * e->nb_paths);
 	i =  0;
 	ft_copy_mat(e);
 	while (i < e->nb_paths)

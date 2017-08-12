@@ -1,2 +1,2 @@
 make linux
-cat ${1-maps/example} | ./lem-in
+cat ${1-maps/goodmap_jjj} | ./lem-in

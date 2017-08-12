@@ -36,8 +36,8 @@ char	*ft_pop_op(t_op **lst)
 	s = ft_strdup((*lst)->op);
 	tmp = *lst;
 	*lst = (*lst)->next;
-	free(tmp);
 	free(tmp->op);
+	free(tmp);
 	return (s);
 }
 

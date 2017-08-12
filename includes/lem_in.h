@@ -14,6 +14,7 @@ typedef struct		s_env
 	int		**cpy;
 	int		**paths;
 	int		nb_paths;
+	int		*visited;
 }					t_env;
 typedef struct		s_op
 {

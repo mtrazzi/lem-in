@@ -10,7 +10,11 @@ void	ft_parse_number(t_op **lst, t_env *e)
 	if (!ft_is_number(line))
 		ft_error("not a number for first line");
 	e->n = ft_atoi(line);
-	free(line);
+	if (line)
+	{
+		free(line);
+		line = NULL;
+	}
 }
 
 int		ft_parse_room(t_op **lst, t_env *e, int i)
@@ -22,6 +26,8 @@ int		ft_parse_room(t_op **lst, t_env *e, int i)
 	if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
 	{
 		room = ft_pop_op(lst);
+		ft_printf("line is >>>%s<<<\n", line);
+		ft_printf("room is >>>%s<<<\n", room);
 		if (!ft_is_room(room))
 		{
 			free(line);
@@ -77,7 +83,9 @@ void	ft_parse_lst(t_env *e)
 	e->m = ft_init_mat(e->nb_r);
 	while (lst && (ft_is_room(lst->op) || *(lst->op) == '#'))
 		i += ft_parse_room(&lst, e, i);
-	ft_assert(lst, "nothing after rooms");
+	if (!lst)
+		ft_error("nothing after room");
+	ft_printf("lst->op is >>>%s<<<\n", lst->op);
 	while (lst && (ft_is_tube(lst->op) || *(lst->op) == '#'))
 		ft_parse_tube(&lst, e);
 	if (lst)

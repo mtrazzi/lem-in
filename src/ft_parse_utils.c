@@ -26,6 +26,8 @@ int		ft_get_index(char *str, t_env *e)
 	int i;
 
 	i = 0;
+	if (!str)
+		return (e->nb_r);
 	while (ft_strcmp(str, e->c[i]) && i < e->nb_r)
 		i++;
 	return (i);

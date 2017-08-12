@@ -60,6 +60,8 @@ void	ft_parse_tube(t_op **lst, t_env *e)
 	*(ft_strchr(line, '-')) = '\0';	
 	x = ft_get_index(line, e);
 	y = ft_get_index(ft_strchr(line, '\0') + 1, e);
+	if (x == e->nb_r || y == e->nb_r)
+		ft_error_env(e, "tube out of bound");
 	e->m[x][y] = 1;
 	e->m[y][x] = 1;
 	free(line);

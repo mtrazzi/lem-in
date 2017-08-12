@@ -81,19 +81,16 @@ t_op *ft_parse_stdin(void)
 	ok = 1;
 	while ((ret = get_next_line(0, &line)) > 0 && ok)
 	{
-		ft_printf("line is : %s\n", line);
 		ok = (ft_is_tube(line) || ft_is_room(line) || ft_is_number(line)
 		|| *line == '#');
-		ft_printf("tube ? %d room ? %d number ? %d comment ? %d\n", ft_is_tube(line), ft_is_room(line), ft_is_number(line), *line == '#');
 		if (ok)
 			ft_add_to_end(line, &lst);
 		free(line);
 	}
-	if (line && (ft_is_tube(line) || *line == '#'))
-	{
-		ft_add_to_end(line, &lst);
-		free(line);
-	}
+	if (!line || (!ft_is_tube(line) && (*line != '#')))
+		ft_error("empty file or last line incorrect");
+	ft_add_to_end(line, &lst);
+	free(line);
 	if (ret < 0)
 		ft_error("error in get_next_line");
 	return (lst);

@@ -26,8 +26,6 @@ int		ft_parse_room(t_op **lst, t_env *e, int i)
 	if (!ft_strcmp(line, "##start") || !ft_strcmp(line, "##end"))
 	{
 		room = ft_pop_op(lst);
-		ft_printf("line is >>>%s<<<\n", line);
-		ft_printf("room is >>>%s<<<\n", room);
 		if (!ft_is_room(room))
 		{
 			free(line);
@@ -74,6 +72,8 @@ void	ft_parse_lst(t_env *e)
 
 	i = 1;
 	lst = ft_parse_stdin();
+	if (!lst)
+		return ;
 	ft_print_lst_op(lst);
 	ft_putchar('\n');
 	ft_parse_number(&lst, e);
@@ -85,7 +85,6 @@ void	ft_parse_lst(t_env *e)
 		i += ft_parse_room(&lst, e, i);
 	if (!lst)
 		ft_error("nothing after room");
-	ft_printf("lst->op is >>>%s<<<\n", lst->op);
 	while (lst && (ft_is_tube(lst->op) || *(lst->op) == '#'))
 		ft_parse_tube(&lst, e);
 	if (lst)

@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 12:45:44 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/05/27 13:37:09 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/12 13:11:34 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,8 @@ size_t	ft_strlen(const char *s)
 {
 	size_t i;
 
+	if (!s)
+		exit(EXIT_FAILURE);
 	i = 0;
 	while (s[i])
 		i++;

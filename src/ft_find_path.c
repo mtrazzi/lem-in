@@ -77,7 +77,7 @@ int		ft_find_path_aux(t_env *e, int *path, int end)
 	return (0);
 }
 
-int		*ft_find_path(t_env *e) // supposing there is path
+int		*ft_find_path(t_env *e)
 {
 	 int *result;
 

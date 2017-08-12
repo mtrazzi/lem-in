@@ -9,7 +9,7 @@ char	*get_buffer(const int fd)
 	ft_memset(buff, 0, BUF_SIZE);
 	n = 0;
 	ret = read(fd, buff, BUF_SIZE);
-	if (ret < 0)
+	if (ret <= 0)
 		perror("Error :");
 	return (ft_strdup(buff));
 }

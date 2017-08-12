@@ -32,3 +32,13 @@ int		ft_get_index(char *str, t_env *e)
 		i++;
 	return (i);
 }
+
+void	ft_update_start_end(t_env *e, char *line)
+{
+	if (!ft_strcmp(line, "##start"))
+		e->start += 1;
+	if (!ft_strcmp(line, "##end"))
+		e->end += 1;
+	if (e->start > 1 || e->end > 1)
+		ft_error("multiple start or end");
+}

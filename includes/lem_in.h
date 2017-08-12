@@ -15,6 +15,8 @@ typedef struct		s_env
 	int		**paths;
 	int		nb_paths;
 	int		*visited;
+	int		start;
+	int		end;
 }					t_env;
 typedef struct		s_op
 {
@@ -60,5 +62,6 @@ void		ft_process_paths(t_env *e);
 void		ft_free_env(t_env *e);
 void		ft_error_env(t_env *e, char *str);
 void		ft_free_lst_op(t_op *lst);
+void		ft_update_start_end(t_env *e, char *line);
 
 #endif

@@ -14,6 +14,8 @@ t_env	*ft_init_env(void)
 	e->paths = NULL;
 	e->nb_paths = 0;
 	e->visited = NULL;
+	e->start = 0;
+	e->end = 0;
 	return (e);
 }
 

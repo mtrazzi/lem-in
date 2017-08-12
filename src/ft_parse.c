@@ -33,6 +33,7 @@ int		ft_parse_room(t_op **lst, t_env *e, int i)
 			ft_error_env(e, "incorrect room after start or end");
 		}
 		e->c[(!ft_strcmp(line, "##start") ? 0 : e->nb_r - 1)] = ft_process_room(room);
+		ft_update_start_end(e, line);
 		free(line);
 		return (0);
 	}
@@ -85,8 +86,8 @@ void	ft_parse_lst(t_env *e)
 	e->m = ft_init_mat(e->nb_r);
 	while (lst && (ft_is_room(lst->op) || *(lst->op) == '#'))
 		i += ft_parse_room(&lst, e, i);
-	if (!lst)
-		ft_error("nothing after room");
+	if (!lst || (!e->start || !e->end))
+		ft_error("error parsing rooms");
 	while (lst && (ft_is_tube(lst->op) || *(lst->op) == '#'))
 		ft_parse_tube(&lst, e);
 	if (lst)

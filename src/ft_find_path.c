@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_find_path.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/12 15:25:31 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 15:31:25 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int		ft_is_there_path(t_env *e, int end)
@@ -10,7 +22,7 @@ int		ft_is_there_path(t_env *e, int end)
 	while (i < e->nb_r)
 	{
 		if (e->cpy[i][end])
-		{	
+		{
 			e->cpy[i][end] = 0;
 			e->cpy[end][i] = 0;
 			if (ft_is_there_path(e, i))
@@ -65,15 +77,15 @@ int		ft_find_path_aux(t_env *e, int *path, int end)
 
 int		*ft_find_path(t_env *e)
 {
-	 int *result;
+	int *result;
 
-	 result = ft_memalloc(sizeof(int) * e->nb_r);
-	 e->visited = ft_memalloc(sizeof(int) * e->nb_r);
-	 ft_find_path_aux(e, result, e->nb_r - 1);
-	 if (e->visited)
-	 {
-	 	free(e->visited);
-		e->visited = NULL;	 
-	 }
-	 return (result);
+	result = ft_memalloc(sizeof(int) * e->nb_r);
+	e->visited = ft_memalloc(sizeof(int) * e->nb_r);
+	ft_find_path_aux(e, result, e->nb_r - 1);
+	if (e->visited)
+	{
+		free(e->visited);
+		e->visited = NULL;
+	}
+	return (result);
 }

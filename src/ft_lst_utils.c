@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lst_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/12 15:25:33 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 15:29:08 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 t_op	*ft_new_op(char *op)
@@ -57,17 +69,12 @@ int		ft_count_rooms(t_op *lst)
 	return (i);
 }
 
-void	ft_print_top_op(t_op *t)
-{
-	ft_putstr(t->op);
-	ft_putchar('\n');
-}
-
 void	ft_print_lst_op(t_op *t)
 {
 	while (t)
 	{
-		ft_print_top_op(t);
+		ft_putstr(t->op);
+		ft_putchar('\n');
 		t = t->next;
 	}
 }

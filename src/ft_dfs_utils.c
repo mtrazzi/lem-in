@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_dfs_utils.c                                     :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/12 15:25:25 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 15:27:36 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	ft_copy_mat(t_env *e)
@@ -72,24 +84,10 @@ void	ft_free_mat(int **m, int size)
 		i++;
 	}
 	if (m)
-	{	
+	{
 		free(m);
 		m = NULL;
 	}
-}
-
-int		ft_get_pre(t_env *e, int s, int *tab)
-{
-	int i;
-
-	i = 0;
-	while (i < e->nb_r)
-	{
-		if (tab[i] == s)
-			return (i);
-		i++;
-	}
-	return (-1);
 }
 
 void	ft_del_path(t_env *e, int *path)

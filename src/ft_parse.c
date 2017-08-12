@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/12 15:25:36 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 15:36:10 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 void	ft_parse_number(t_op **lst, t_env *e)
@@ -5,7 +17,7 @@ void	ft_parse_number(t_op **lst, t_env *e)
 	char *line;
 
 	if (!lst)
-		ft_error("nothing instead of number for first line");	
+		ft_error("nothing instead of number for first line");
 	line = ft_pop_op(lst);
 	if (!ft_is_number(line))
 		ft_error("not a number for first line");
@@ -32,9 +44,7 @@ int		ft_parse_room(t_op **lst, t_env *e, int i)
 			free(room);
 			ft_error_env(e, "incorrect room after start or end");
 		}
-		e->c[(!ft_strcmp(line, "##start") ? 0 : e->nb_r - 1)] = ft_process_room(room);
-		ft_update_start_end(e, line);
-		free(line);
+		ft_update_start_end(e, line, room);
 		return (0);
 	}
 	else if ((*line) == '#')
@@ -58,7 +68,7 @@ void	ft_parse_tube(t_op **lst, t_env *e)
 		free(line);
 		return ;
 	}
-	*(ft_strchr(line, '-')) = '\0';	
+	*(ft_strchr(line, '-')) = '\0';
 	x = ft_get_index(line, e);
 	y = ft_get_index(ft_strchr(line, '\0') + 1, e);
 	if (x == e->nb_r || y == e->nb_r)
@@ -94,7 +104,4 @@ void	ft_parse_lst(t_env *e)
 		ft_error("general scope not well formated. Usage : nb/rooms/tubes");
 	e->a = ft_memalloc(sizeof(int) * e->nb_r);
 	e->a[0] = e->n;
-	ft_copy_mat(e);
-	if (!ft_is_there_path(e, e->nb_r - 1))
-		ft_error("no path");
 }

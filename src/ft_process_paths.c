@@ -1,11 +1,23 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_process_paths.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/12 15:25:45 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 15:44:38 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 int		ft_count_paths(t_env *e)
 {
 	int i;
 	int *tab;
+
 	i = 0;
-	
 	ft_copy_mat(e);
 	while (ft_is_there_path(e, e->nb_r - 1))
 	{
@@ -24,7 +36,7 @@ void	ft_create_mat_path(t_env *e)
 
 	e->nb_paths = ft_count_paths(e);
 	e->paths = ft_memalloc(sizeof(int *) * e->nb_paths);
-	i =  0;
+	i = 0;
 	ft_copy_mat(e);
 	while (i < e->nb_paths)
 	{
@@ -32,7 +44,7 @@ void	ft_create_mat_path(t_env *e)
 		e->paths[i] = path;
 		ft_del_path(e, path);
 		i++;
-	}	
+	}
 }
 
 void	ft_process_paths_aux(t_env *e, int i, int j)
@@ -69,7 +81,7 @@ void	ft_process_paths(t_env *e)
 		while (j > 0)
 		{
 			ft_process_paths_aux(e, i, j);
-			j = e->paths[i][j];	
+			j = e->paths[i][j];
 		}
 		i++;
 	}

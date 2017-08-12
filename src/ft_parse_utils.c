@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_utils.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/12 15:25:40 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 15:34:23 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 char	*ft_process_room(char *s)
@@ -33,12 +45,15 @@ int		ft_get_index(char *str, t_env *e)
 	return (i);
 }
 
-void	ft_update_start_end(t_env *e, char *line)
+void	ft_update_start_end(t_env *e, char *line, char *room)
 {
+	e->c[(!ft_strcmp(line, "##start") ? 0 : e->nb_r - 1)] = \
+		ft_process_room(room);
 	if (!ft_strcmp(line, "##start"))
 		e->start += 1;
 	if (!ft_strcmp(line, "##end"))
 		e->end += 1;
 	if (e->start > 1 || e->end > 1)
 		ft_error("multiple start or end");
+	free(line);
 }

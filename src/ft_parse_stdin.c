@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_parse_stdin.c                                   :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2017/08/12 15:25:38 by mtrazzi           #+#    #+#             */
+/*   Updated: 2017/08/12 15:44:22 by mtrazzi          ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "lem_in.h"
 
 t_env	*ft_init_env(void)
@@ -71,7 +83,7 @@ int		ft_is_number(char *line)
 	return (!(*line));
 }
 
-t_op *ft_parse_stdin(void)
+t_op	*ft_parse_stdin(void)
 {
 	t_op	*lst;
 	char	*line;

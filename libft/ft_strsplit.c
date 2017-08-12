@@ -6,7 +6,7 @@
 /*   By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/05/27 17:09:29 by mtrazzi           #+#    #+#             */
-/*   Updated: 2017/08/12 13:19:46 by mtrazzi          ###   ########.fr       */
+/*   Updated: 2017/08/12 15:15:58 by mtrazzi          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,16 @@ static	size_t	strlen_char(char const *s, char c)
 	return (i);
 }
 
+char			*ft_strsplit_aux(char **tmp)
+{
+	char *str;
+
+	str = ft_strdup(*tmp);
+	free(*tmp);
+	free(tmp);
+	return (str);
+}
+
 char			**ft_strsplit(char const *s, char c)
 {
 	char	**tab;
@@ -67,9 +77,7 @@ char			**ft_strsplit(char const *s, char c)
 			return (NULL);
 		ft_strncpy(*tmp, s + i, strlen_char(s + i, c));
 		i += strlen_char(s + i, c);
-		tab[j] = ft_strdup(*tmp);
-		free(*tmp);
-		free(tmp);
+		tab[j] = ft_strsplit_aux(tmp);
 		j++;
 	}
 	tab[j] = 0;

@@ -6,7 +6,7 @@
 #    By: mtrazzi <marvin@42.fr>                     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/08/06 11:51:28 by mtrazzi           #+#    #+#              #
-#    Updated: 2017/08/12 11:00:04 by mtrazzi          ###   ########.fr        #
+#    Updated: 2017/08/12 15:45:44 by mtrazzi          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,11 +38,10 @@ SRC_FILES		=	main.c				\
 					ft_error.c			\
 					ft_parse.c			\
 					ft_parse_utils.c	\
-					ft_print_utils.c	\
 					ft_dfs_utils.c		\
 					ft_find_path.c		\
 					ft_process_paths.c	\
-					ft_clean.c
+					ft_clean.c			
 
 SRC				=	$(addprefix $(SRC_PATH), $(SRC_FILES))
 
@@ -81,7 +80,7 @@ all: $(NAME)
 
 $(NAME): $(LIB) $(OBJ)
 	@echo "Building $(NAME)..."
-	$(CC) -g $(CFLAGS) $(LIB) $(OBJ) -o $@
+	$(CC) $(CFLAGS) $(LIB) $(OBJ) -o $@
 	@echo "\033[3;94m!$(NAME) built!\033[0m"
 
 $(LIB):

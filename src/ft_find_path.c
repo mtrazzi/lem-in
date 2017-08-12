@@ -3,7 +3,6 @@
 int		ft_is_there_path(t_env *e, int end)
 {
 	int i;
-	int **m;
 
 	if (end == 0)
 		return (1);
@@ -12,19 +11,12 @@ int		ft_is_there_path(t_env *e, int end)
 	{
 		if (e->cpy[i][end])
 		{	
-			m = ft_backup_mat(e->cpy, e->nb_r);
 			e->cpy[i][end] = 0;
 			e->cpy[end][i] = 0;
 			if (ft_is_there_path(e, i))
-			{
-				ft_free_mat(e->cpy, e->nb_r);
-				e->cpy = ft_backup_mat(m, e->nb_r); 
-				ft_free_mat(m, e->nb_r);
 				return (1);
-			}
-			ft_free_mat(e->cpy, e->nb_r);
-			e->cpy = ft_backup_mat(m, e->nb_r); 
-			ft_free_mat(m, e->nb_r);
+			e->cpy[i][end] = 1;
+			e->cpy[end][i] = 1;
 		}
 		i++;
 	}
@@ -47,7 +39,6 @@ void	ft_del_vertex(t_env *e, int s)
 int		ft_find_path_aux(t_env *e, int *path, int end)
 {
 	int i;
-	int **m;
 
 	if (end == 0)
 		return (1);
@@ -57,20 +48,15 @@ int		ft_find_path_aux(t_env *e, int *path, int end)
 		if (e->cpy[i][end] && !e->visited[i])
 		{
 			e->visited[i] = 1;
-			m = ft_backup_mat(e->cpy, e->nb_r);
 			e->cpy[i][end] = 0;
 			e->cpy[end][i] = 0;
 			if (ft_find_path_aux(e, path, i))
 			{
 				path[end] = i;
-				ft_free_mat(e->cpy, e->nb_r);
-				e->cpy = ft_backup_mat(m, e->nb_r); 
-				ft_free_mat(m, e->nb_r);
 				return (1);
 			}
-			ft_free_mat(e->cpy, e->nb_r);
-			e->cpy = ft_backup_mat(m, e->nb_r); 
-			ft_free_mat(m, e->nb_r);
+			e->cpy[i][end] = 1;
+			e->cpy[end][i] = 1;
 		}
 		i++;
 	}
